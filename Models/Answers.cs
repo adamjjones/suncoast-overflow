@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace suncoast_overflow.Models
 {
@@ -12,6 +13,10 @@ namespace suncoast_overflow.Models
     public int upvote { get; set; }
     public int downvote { get; set; }
     public string content { get; set; }
+    public ICollection<Question> Questions { get; set; } = new List<Question>();
+
+    public int? AnswerId { get; set; }
+    public Answers Answer { get; set; }
 
   }
 }

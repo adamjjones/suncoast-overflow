@@ -10,5 +10,6 @@ namespace suncoast_overflow.Models
     public string UserName { get; set; }
     public int upvote { get; set; }
     public int downvote { get; set; }
+
   }
 }

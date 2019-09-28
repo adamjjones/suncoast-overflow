@@ -16,15 +16,19 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: rgb(73,79,82);
+  /* background: rgb(73, 79, 82); */
   color: whitesmoke;
-
 }
 
 .nav-links {
+  color: white;
   width: 50%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   list-style: none;
+}
+
+.nav-link {
+  color: white;
 }
