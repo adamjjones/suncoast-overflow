@@ -1,55 +1,30 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
-export class FetchData extends Component {
-  static displayName = FetchData.name;
+// const response = await fetch('https://localhost:5001/api/Questions', {
+//   method: 'post',
+//   body: console.log('Posted')
+// })
 
-  constructor (props) {
-    super(props);
-    this.state = { forecasts: [], loading: true };
-
-    fetch('api/SampleData/WeatherForecasts')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ forecasts: data, loading: false });
-      });
+const Questions = props => {
+  const [data, setData] = useState({ data: [] })
+  const getData = async () => {
+    const resp = await axios.post(`https://localhost:5001/api/Questions`)
+    console.log('Posted')
+    // const json = JSON.parse(resp.data.contents)
+    // setInfo(json)
+    // console.log(json)
   }
+  useEffect(() => {
+    getData()
+  }, [])
 
-  static renderForecastsTable (forecasts) {
-    return (
-      <table className='table table-striped'>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-          </tr>
-        </thead>
-        <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.dateFormatted}>
-              <td>{forecast.dateFormatted}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    );
-  }
-
-  render () {
-    let contents = this.state.loading
-      ? <p><em>Loading...</em></p>
-      : FetchData.renderForecastsTable(this.state.forecasts);
-
-    return (
-      <div>
-        <h1>Weather forecast</h1>
-        <p>This component demonstrates fetching data from the server.</p>
-        {contents}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <textarea></textarea>
+      <input type="submit" onClick="getData" />
+    </div>
+  )
 }
+
+export default Questions

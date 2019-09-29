@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -6,9 +9,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-
 using Newtonsoft.Json;
-using Swashbuckle.AspNetCore.Swagger;
 
 namespace suncoast_overflow
 {
@@ -26,13 +27,13 @@ namespace suncoast_overflow
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      services.AddCors();
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
        .AddJsonOptions(options =>
       {
         options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
       });
 
-      services.AddDbContext<DatabaseContext>();
       services.AddHealthChecks();
       // Register the Swagger generator, defining 1 or more Swagger documents
       services.AddSwaggerGen(c =>

@@ -32,3 +32,8 @@ nav {
 .nav-link {
   color: white;
 }
+
+textarea {
+  width: 25rem;
+  margin: 30px;
+}

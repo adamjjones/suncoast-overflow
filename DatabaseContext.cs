@@ -45,7 +45,7 @@ namespace suncoast_overflow
     {
       modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
     }
-    public DbSet<Question> Questions { get; set; }
+    public DbSet<Questions> Questions { get; set; }
     public DbSet<Answers> Answers { get; set; }
   }
 }
