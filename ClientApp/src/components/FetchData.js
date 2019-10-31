@@ -9,12 +9,29 @@ import axios from 'axios'
 const Questions = props => {
   const [data, setData] = useState({ data: [] })
   const getData = async () => {
-    const resp = await axios.post(`https://localhost:5001/api/Questions`)
+    const resp = await axios.get(`https://localhost:5001/api/Questions`)
+      .then(resp => {
+        console.log(resp.data)
+      })
     console.log('Posted')
     // const json = JSON.parse(resp.data.contents)
     // setInfo(json)
     // console.log(json)
   }
+
+  const [newQuestion, setnewQuestion] = useState({})
+  const postData = async () => {
+    const resp = await axios.post(`https://localhost:5001/api/Questions`, {
+      id: 1,
+      Title: "Title"
+    })
+
+      .then(resp => {
+        console.log(resp.data)
+      })
+  }
+
+
   useEffect(() => {
     getData()
   }, [])
@@ -22,7 +39,8 @@ const Questions = props => {
   return (
     <div>
       <textarea></textarea>
-      <input type="submit" onClick="getData" />
+      <input type="submit" onClick={postData} />
+      <button onClick={getData}>New Qusetion</button>
     </div>
   )
 }

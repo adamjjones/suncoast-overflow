@@ -13,6 +13,5 @@ namespace suncoast_overflow.Models
     public int downvote { get; set; }
 
     public List<Answers> Answers { get; set; } = new List<Answers>();
-    // public Answers Answers { get; set; }
   }
 }
